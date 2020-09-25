@@ -5,7 +5,7 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab2._02_04_char_freq import char_freq
+from lab_solutions.lab02_04_char_freq import char_freq
 
 
 def are_anagrams(word1, word2):

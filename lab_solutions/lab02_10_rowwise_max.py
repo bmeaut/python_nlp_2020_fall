@@ -5,23 +5,23 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab2._02_09_transpose import transpose
-from lab_solutions.lab2._02_10_rowwise_max import rowwise_max
+from lab_solutions.lab02_03_is_matrix import is_matrix
 
 
-def columnwise_max(M):
-    transposed_mx = transpose(M)
-    return rowwise_max(transposed_mx)
+def rowwise_max(M):
+    if not is_matrix(M):
+        raise ValueError('Oh no :(')
+    return [max(row) for row in M]
 
 
 def main():
-    assert columnwise_max(
+    assert rowwise_max(
         [
             [1, 2, 3],
             [1, 4, 3],
             [1, 5, 3],
         ]
-    ) == [1, 5, 3]
+    ) == [3, 4, 5]
 
     print("Tests passed.")
 

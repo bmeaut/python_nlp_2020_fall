@@ -5,7 +5,7 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab2._02_03_is_matrix import is_matrix
+from lab_solutions.lab02_03_is_matrix import is_matrix
 
 
 def transpose(M):

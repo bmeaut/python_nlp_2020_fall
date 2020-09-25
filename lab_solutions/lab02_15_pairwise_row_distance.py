@@ -5,9 +5,9 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab2._02_03_is_matrix import is_matrix
-from lab_solutions.lab2._02_14_l2_disctance import l2_distance
-from lab_solutions.lab2._02_09_transpose import transpose
+from lab_solutions.lab02_03_is_matrix import is_matrix
+from lab_solutions.lab02_14_l2_disctance import l2_distance
+from lab_solutions.lab02_09_transpose import transpose
 
 
 def pairwise_row_distance(A):

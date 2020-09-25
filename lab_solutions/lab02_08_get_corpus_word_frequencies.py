@@ -5,8 +5,8 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab2._02_05_word_freq import word_freq
-from lab_solutions.lab2._02_06_build_wikipedia_corpus import build_wikipedia_corpus
+from lab_solutions.lab02_05_word_freq import word_freq
+from lab_solutions.lab02_06_build_wikipedia_corpus import build_wikipedia_corpus
 
 
 def get_and_pretty_print_top_k(freq_dict, k=10):
