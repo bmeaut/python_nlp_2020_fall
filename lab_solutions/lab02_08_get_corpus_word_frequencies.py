@@ -23,7 +23,7 @@ def construct_test_case():
     corpus.append(base_text)
     animals = ['dog', 'cat', 'bird', 'elephant', 'monkey', 'mice', 'donkey', 'lion', 'medusa', 'whale', 'eagle', 'pig', 'chicken']
     for i in range(len(animals)):
-        animal_text = ''.join([animals[i] + ' ' for j in range(i+1)])
+        animal_text = ''.join([animals[i] + ' ' for _ in range(i+1)])
         text = f'This sentence contains {i+1} of the same words: {str(animal_text)[:-1]}'
         corpus.append(text)
 
@@ -38,18 +38,18 @@ def get_corpus_word_frequencies(corpus):
                 base_dict[word] = 1
             else:
                 base_dict[word] += 1
-
     top_k = get_top_k(base_dict)
-    pretty_print_top_k(top_k)
     return top_k
 
 
 def main():
     corpus = build_wikipedia_corpus()
-    _ = get_corpus_word_frequencies(corpus)
+    corpus_freqs = get_corpus_word_frequencies(corpus)
+    pretty_print_top_k(corpus_freqs)
     print('------------------------')
     test_case = construct_test_case()
     test_case_word_freqs = get_corpus_word_frequencies(test_case)
+    pretty_print_top_k(test_case_word_freqs)
     expected_result = [('This', 14),
                        ('chicken', 13),
                        ('sentence', 13),
