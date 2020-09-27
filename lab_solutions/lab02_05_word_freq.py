@@ -9,13 +9,11 @@
 def word_freq(s):
     frequencies = {}
     words = s.split()
-
     for word in words:
-        if word not in frequencies.keys():
+        if word not in frequencies:
             frequencies[word] = 1
         else:
             frequencies[word] += 1
-
     return frequencies
 
 

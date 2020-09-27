@@ -9,7 +9,7 @@
 def char_freq(s):
     frequencies = {}
     for char in s:
-        if char not in frequencies.keys():
+        if char not in frequencies:
             frequencies[char] = 1
         else:
             frequencies[char] += 1

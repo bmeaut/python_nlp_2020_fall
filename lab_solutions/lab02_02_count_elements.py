@@ -9,7 +9,7 @@
 def count_elements(sequence):
     counts = {}
     for i in sequence:
-        if i not in counts.keys():
+        if i not in counts:
             counts[i] = 1
         else:
             counts[i] += 1

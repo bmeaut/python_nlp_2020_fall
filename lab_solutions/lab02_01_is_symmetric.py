@@ -7,23 +7,17 @@
 
 
 def is_symmetric(l):
-    return list(reversed(l)) == list(l)
-
-
-def is_symmetric_opt(l):
     length = len(l)
     first = 0
     last = length - 1
-    is_sym = True
-    while first < last:
+    for i in range(length//2):
         if l[first] == l[last]:
             first = first + 1
             last = last - 1
         else:
-            is_sym = False
-            break
+            return False
 
-    return is_sym
+    return True
 
 
 def main():
@@ -32,12 +26,6 @@ def main():
     assert is_symmetric([1, 2, 3, 1]) == False
     assert is_symmetric([1, "foo", "bar", "foo", 1]) == True
     assert is_symmetric("abcba") == True
-
-    assert is_symmetric_opt([1]) == True
-    assert is_symmetric_opt([]) == True
-    assert is_symmetric_opt([1, 2, 3, 1]) == False
-    assert is_symmetric_opt([1, "foo", "bar", "foo", 1]) == True
-    assert is_symmetric_opt("abcba") == True
 
     print("Tests passed.")
 

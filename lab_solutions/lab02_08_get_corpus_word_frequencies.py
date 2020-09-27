@@ -5,16 +5,16 @@
 #
 # Distributed under terms of the MIT license.
 
-from lab_solutions.lab02_05_word_freq import word_freq
 from lab_solutions.lab02_06_build_wikipedia_corpus import build_wikipedia_corpus
 
 
-def get_and_pretty_print_top_k(freq_dict, k=10):
-    list_to_print = sorted(list(freq_dict.items()), key=lambda x: x[1], reverse=True)[:k]
-    for key, value in list_to_print:
-        print(key + '\t' + str(value))
+def get_top_k(freq_dict, k=10):
+    return sorted(list(freq_dict.items()), key=lambda x: x[1], reverse=True)[:k]
 
-    return list_to_print
+
+def pretty_print_top_k(list_to_print):
+    for key, value in list_to_print:
+        print(f'{key} \t {str(value)}')
 
 
 def construct_test_case():
@@ -24,7 +24,7 @@ def construct_test_case():
     animals = ['dog', 'cat', 'bird', 'elephant', 'monkey', 'mice', 'donkey', 'lion', 'medusa', 'whale', 'eagle', 'pig', 'chicken']
     for i in range(len(animals)):
         animal_text = ''.join([animals[i] + ' ' for j in range(i+1)])
-        text = f'This sentence contains {i+1} of the same words: ' + str(animal_text)
+        text = f'This sentence contains {i+1} of the same words: {str(animal_text)[:-1]}'
         corpus.append(text)
 
     return corpus
@@ -33,10 +33,14 @@ def construct_test_case():
 def get_corpus_word_frequencies(corpus):
     base_dict = {}
     for text in corpus:
-        freqs = word_freq(text)
-        base_dict = {x: base_dict.get(x, 0) + freqs.get(x, 0) for x in set(base_dict.keys()).union(set(freqs.keys()))}
+        for word in text.split(" "):
+            if word not in base_dict:
+                base_dict[word] = 1
+            else:
+                base_dict[word] += 1
 
-    top_k = get_and_pretty_print_top_k(base_dict)
+    top_k = get_top_k(base_dict)
+    pretty_print_top_k(top_k)
     return top_k
 
 

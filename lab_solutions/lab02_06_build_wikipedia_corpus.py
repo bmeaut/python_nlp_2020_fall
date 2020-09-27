@@ -15,11 +15,13 @@ def build_wikipedia_corpus():
     corpus = []
     for city in cities_to_search:
         city_page = wikipedia.page(city)
-        if corpus_length < 100000:
+        if corpus_length <= 100000:
             corpus.append(city_page.content)
             corpus_length += len(city_page.content)
         else:
             return corpus
+
+    raise Exception('Could not exceed the desired 100000 corpus length. Please provide more pages to search.')
 
 
 def main():

@@ -10,7 +10,7 @@ from lab_solutions.lab02_03_is_matrix import is_matrix
 
 def transpose(M):
     if not is_matrix(M):
-        raise ValueError('Oh no :(')
+        raise ValueError(f'Matrix {M} is not a valid matrix')
     else:
         return [list(i) for i in zip(*M)]
 

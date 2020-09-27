@@ -10,7 +10,7 @@ from lab_solutions.lab02_03_is_matrix import is_matrix
 
 def rowwise_max(M):
     if not is_matrix(M):
-        raise ValueError('Oh no :(')
+        raise ValueError(f'Matrix {M} is not a valid matrix')
     return [max(row) for row in M]
 
 
