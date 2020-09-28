@@ -10,7 +10,8 @@ import wikipedia
 
 def build_wikipedia_corpus():
     wikipedia.set_lang('hu')
-    cities_to_search = ['Budapest', 'Debrecen', 'Miskolc', 'Nyíregyháza', 'Pécs', 'Szeged']
+    cities_to_search = ['Budapest', 'Debrecen', 'Miskolc',
+                        'Nyíregyháza', 'Pécs', 'Szeged']
     corpus_length = 0
     corpus = []
     for city in cities_to_search:
@@ -21,7 +22,8 @@ def build_wikipedia_corpus():
         else:
             return corpus
 
-    raise Exception('Could not exceed the desired 100000 corpus length. Please provide more pages to search.')
+    raise Exception('Could not exceed the desired 100000 corpus length. '
+                    'Please provide more pages to search.')
 
 
 def main():

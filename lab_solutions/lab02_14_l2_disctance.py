@@ -11,7 +11,7 @@ def l2_distance(vector1, vector2):
     dim2 = len(vector2)
     dim_diff = abs(dim1 - dim2)
     if dim_diff != 0:
-        raise ValueError(f'The dimensions of the provided two vectors are not equal, so cannot compute their L2 distance. v1_dim: {dim1}, v2_dim: {dim2}')
+        raise ValueError('Vectors dimensions must be equal')
     square_sum = 0
     for i in range(len(vector1)):
         square_sum += (vector1[i] - vector2[i]) ** 2

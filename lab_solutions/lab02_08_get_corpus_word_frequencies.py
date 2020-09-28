@@ -14,14 +14,16 @@ def get_top_k(freq_dict, k=10):
 
 def pretty_print_top_k(list_to_print):
     for key, value in list_to_print:
-        print(f'{key} \t {str(value)}')
+        print(f'{key}\t{str(value)}')
 
 
 def construct_test_case():
     corpus = []
-    base_text = 'This lecture is really cool. Please give me extra points. I really need them. :)'
+    base_text = 'This lecture is really cool. ' \
+                'Please give me extra points. I really need them. :)'
     corpus.append(base_text)
-    animals = ['dog', 'cat', 'bird', 'elephant', 'monkey', 'mice', 'donkey', 'lion', 'medusa', 'whale', 'eagle', 'pig', 'chicken']
+    animals = ['dog', 'cat', 'bird', 'elephant', 'monkey', 'mice', 'donkey',
+               'lion', 'medusa', 'whale', 'eagle', 'pig', 'chicken']
     for i in range(len(animals)):
         animal_text = ''.join([animals[i] + ' ' for _ in range(i+1)])
         text = f'This sentence contains {i+1} of the same words: {str(animal_text)[:-1]}'
@@ -60,7 +62,9 @@ def main():
                        ('same', 13),
                        ('pig', 12),
                        ('eagle', 11)]
-    # Converting the lists to sets here, so in case two words have equal frequency in the top 10, the ordering won't have an effect on the tests
+    # Converting the lists to sets here,
+    # so in case two words have equal frequency in the top 10,
+    # the ordering won't have an effect on the tests
     assert (set(test_case_word_freqs) == set(expected_result))
 
     print("Test passed.")
