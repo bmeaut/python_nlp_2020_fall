@@ -13,9 +13,9 @@ def are_anagrams(word1, word2):
 
 
 def main():
-    assert (are_anagrams("abc", "bac") == True)
-    assert (are_anagrams("aabb", "abab") == True)
-    assert (are_anagrams("abab", "aaab") == False)
+    assert are_anagrams("abc", "bac") == True
+    assert are_anagrams("aabb", "abab") == True
+    assert are_anagrams("abab", "aaab") == False
     print("Tests passed.")
 
 

@@ -14,19 +14,11 @@ def pairwise_row_distance(A):
     if not is_matrix(A):
         raise ValueError("Not a valid matrix")
         
-    l2s = []
+    l2s = [[0 for _ in range(len(A))] for _ in range(len(A))]
     
     for i in range(len(A)):
-        l2_row = []
-        for j in range(len(A)):
-            if i < j:
-                l2_row.append(l2_distance(A[i], A[j]))
-            elif i == j:
-                l2_row.append(0)
-            else: # calculation already done
-                l2_row.append(l2s[j][i])
-            
-        l2s.append(l2_row)
+        for j in range(i+1, len(A)):
+            l2s[i][j] = l2s[j][i] = l2_distance(A[i], A[j])
         
     return l2s
 
