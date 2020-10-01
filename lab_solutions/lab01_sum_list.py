@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2020 Patrick Nanys <patrick.nanys@2000@gmail.com>
+# Copyright © 2020 Patrick Nanys <patrick.nanys2000@gmail.com>
 #
 # Distributed under terms of the MIT license.
 
