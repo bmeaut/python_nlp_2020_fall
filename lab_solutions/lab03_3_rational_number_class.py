@@ -159,10 +159,12 @@ def main():
     assert abs(r) == 1.5
 
     # Test from_str factory method
-    r = RationalNumber(-3, 2)
-    assert RationalNumber.from_str("-3/2") == r
-    assert RationalNumber.from_str("3/-2") == r
-    assert RationalNumber.from_str("3 / -2") == r
+    r1 = RationalNumber(-3, 2)
+    r2 = RationalNumber(12, 34)
+    assert RationalNumber.from_str("-3/2") == r1
+    assert RationalNumber.from_str("-6/4") == r1
+    assert RationalNumber.from_str("12 / 34") == r2
+    assert RationalNumber.from_str("36/    102") == r2
 
     print("Tests passed.")
 
