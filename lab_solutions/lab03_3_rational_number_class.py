@@ -23,30 +23,29 @@ class RationalNumber:
     def __init__(self, p, q=1):
         self.validate_numerator(p)
         self.validate_denominator(q)
-        greatest_common_div = gcd(p, q)
-        if greatest_common_div != 1:
-            self._p = p // greatest_common_div
-            self._q = q // greatest_common_div
-        else:
-            self._p = p
-            self._q = q
+        self._p = p
+        self._q = q
+        self.normalize_fraction()
         if self._q < 0:
             self.switch_signs()
+
+    def normalize_fraction(self):
+        greatest_common_div = gcd(self.p, self.q)
+        if greatest_common_div != 1:
+            self._p = self.p // greatest_common_div
+            self._q = self.q // greatest_common_div
 
     def switch_signs(self):
         self._p *= -1
         self._q *= -1
 
-    def cross_multiple(self, other):
-        return self.p * other.q + self.q * other.p
-
     def __add__(self, other):
-        numerator = self.cross_multiple(other)
+        numerator = self.p * other.q + self.q * other.p
         denominator = self.q * other.q
         return RationalNumber(numerator, denominator)
 
     def __eq__(self, other):
-        return (self.p * other.q) == (self.q * other.p)
+        return (self.p == other.p) and (self.q == other.q)
 
     def __mul__(self, other):
         if not isinstance(other, RationalNumber):
@@ -62,11 +61,8 @@ class RationalNumber:
     def __idiv__(self, other):
         return self / other
 
-    def __invert__(self):
-        return RationalNumber(self.q, self.p)
-
     def __truediv__(self, other):
-        return self * ~other
+        return self * other.inverse()
 
     def __hash__(self):
         return hash((self.p, self.q))
@@ -85,6 +81,7 @@ class RationalNumber:
     def p(self, value):
         self.validate_numerator(value)
         self._p = value
+        self.normalize_fraction()
 
     @property
     def q(self):
@@ -96,23 +93,27 @@ class RationalNumber:
         self._q = value
         if value < 0:
             self.switch_signs()
+        self.normalize_fraction()
 
-    @staticmethod
-    def validate_numerator(p):
+    @classmethod
+    def validate_numerator(cls, p):
         if not isinstance(p, int):
             raise RationalNumberValueError('Numerator has to be an Integer')
 
-    @staticmethod
-    def validate_denominator(q):
+    @classmethod
+    def validate_denominator(cls, q):
         if not isinstance(q, int):
             raise RationalNumberValueError('Denominator has to be an Integer')
         if q == 0:
             raise RationalNumberValueError('Cannot set denominator to 0')
 
-    @staticmethod
-    def from_str(input_str):
+    @classmethod
+    def from_str(cls, input_str):
         p, q = input_str.split('/')
         return RationalNumber(int(p), int(q))
+
+    def inverse(self):
+        return RationalNumber(self.q, self.p)
 
 
 def main():
@@ -125,6 +126,10 @@ def main():
     assert r1 * r2 == RationalNumber(12, 6)
     assert r1 / r2 == RationalNumber(9, 8)
     assert r1 == RationalNumber(6, 4)
+    r4 = RationalNumber(2, 3)
+    r4.p = 1100
+    r4.q = 55
+    assert r4 == RationalNumber(20)
 
     # Test whether class is usable as dict key
     r1 = RationalNumber(3)
