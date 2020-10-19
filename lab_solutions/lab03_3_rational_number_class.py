@@ -96,12 +96,12 @@ class RationalNumber:
         self.normalize_fraction()
 
     @staticmethod
-    def validate_numerator(cls, p):
+    def validate_numerator(p):
         if not isinstance(p, int):
             raise RationalNumberValueError('Numerator has to be an Integer')
 
     @staticmethod
-    def validate_denominator(cls, q):
+    def validate_denominator(q):
         if not isinstance(q, int):
             raise RationalNumberValueError('Denominator has to be an Integer')
         if q == 0:
