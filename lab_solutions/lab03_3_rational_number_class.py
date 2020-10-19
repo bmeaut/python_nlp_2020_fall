@@ -95,12 +95,12 @@ class RationalNumber:
             self.switch_signs()
         self.normalize_fraction()
 
-    @classmethod
+    @staticmethod
     def validate_numerator(cls, p):
         if not isinstance(p, int):
             raise RationalNumberValueError('Numerator has to be an Integer')
 
-    @classmethod
+    @staticmethod
     def validate_denominator(cls, q):
         if not isinstance(q, int):
             raise RationalNumberValueError('Denominator has to be an Integer')
