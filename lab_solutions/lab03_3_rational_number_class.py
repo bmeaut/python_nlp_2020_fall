@@ -110,7 +110,7 @@ class RationalNumber:
     @classmethod
     def from_str(cls, input_str):
         p, q = input_str.split('/')
-        return RationalNumber(int(p), int(q))
+        return cls(int(p), int(q))
 
     def inverse(self):
         return RationalNumber(self.q, self.p)
@@ -127,7 +127,7 @@ def main():
     assert r1 / r2 == RationalNumber(9, 8)
     assert r1 == RationalNumber(6, 4)
     r4 = RationalNumber(2, 3)
-    r4.p = 1100
+    r4.p = 20 * 55
     r4.q = 55
     assert r4 == RationalNumber(20)
 
