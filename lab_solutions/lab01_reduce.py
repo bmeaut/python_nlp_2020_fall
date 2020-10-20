@@ -6,11 +6,13 @@
 # Distributed under terms of the MIT license.
 
 
-def reduce(l, acc_func, accumulator=None):
+def reduce(list_to_reduce, acc_func, accumulator=None):
     if accumulator is not None:
-        l.insert(0, accumulator)
-    accumulated = acc_func(l[0], l[1])
-    ll = l[2:]
+        accumulated = acc_func(accumulator, list_to_reduce[0])
+        ll = list_to_reduce[1:]
+    else:
+        accumulated = acc_func(list_to_reduce[0], list_to_reduce[1])
+        ll = list_to_reduce[2:]
     for item in ll:
         accumulated = acc_func(accumulated, item)
     return accumulated
@@ -31,10 +33,17 @@ def main():
 
     assert (reduce(l1, add) == 7)
     assert (reduce(l1, add, 10) == 17)
+    assert (reduce(l1, max) == 5)
+    assert (reduce(l1, max, 12) == 12)
 
     l2 = ["foo", "bar", "hello"]
 
     assert (reduce(l2, string_len_add, 0) == 11)
+    assert (reduce(l2, string_len_add, 0) == 11)
+
+    # Testing that the original lists are unchanged
+    assert (l1 == [1, 2, -1, 5])
+    assert (l2 == ["foo", "bar", "hello"])
 
     print("Tests passed.")
 
