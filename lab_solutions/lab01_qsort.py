@@ -14,7 +14,6 @@ def swap(l, idx1, idx2):
 
 def qsort(l):
     # unpack
-
     if type(l) is list:
         start = 0
         end = len(l)
@@ -26,7 +25,6 @@ def qsort(l):
         return
 
     # sort partitions in place
-
     pivot_idx = start
     pivot = l[pivot_idx]
     for i in range(start + 1, end):
@@ -38,7 +36,6 @@ def qsort(l):
             pivot_idx += 1
 
     # call next partitions
-
     qsort((l, (0, pivot_idx)))
     if pivot_idx < len(l) - 1:
         qsort((l, (pivot_idx + 1, end)))
